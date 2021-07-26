@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Home from './Home.js';
+import { BrowserRouter, Switch, Route} from 'react-router-dom';
+import Addition from './pages/Addition.js';
+import Subtraction from './pages/Subtraction.js';
+import Multiplication from './pages/Multiplication.js';
+import Division from './pages/Division.js';
+import Fractions from './pages/Fractions.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App" >
+        <BrowserRouter>
+        <Home />
+          <Switch>
+            <Route path="/addition" component={Addition} />
+            <Route path="/subtraction" component={Subtraction} />
+            <Route path="/multiplication" component={Multiplication} />
+            <Route path="/division" component={Division} />
+            <Route path="/fractions" component={Fractions} />
+          </Switch>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;

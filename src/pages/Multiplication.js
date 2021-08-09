@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import "./styles.css";
 
@@ -6,26 +6,41 @@ export default function Multiplication() {
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
     const [i, setI] = useState(0);
-    const [correct, setCorrect] = useState(false)
-    const [started, setStarted] = useState(false)
-    const [ascreen, setAscreen] = useState(true)
-    var question = [];
+    const [grade, setGrade] = useState(0)
+    const [correct, setCorrect] = useState(false);
+    const [started, setStarted] = useState(false);
+    const [ascreen, setAscreen] = useState(true);
+    const [question, setQuestion] = useState();
 
     function create() {
-        var first = Math.floor(Math.random() * 100);
-        var second = Math.floor(Math.random() * 100);
-        var questionText = "What is " + first + " * " + second + " equal to?";
-        question = [questionText, first, second];
-        return question;
+        var first = Math.floor(Math.random() * 10);
+        var second = Math.floor(Math.random() * 10);
+        
+        if (grade === "kinder" || grade === "first") {
+            first = Math.floor(Math.random() * 10);
+            second = Math.floor(Math.random() * 10);
+        }
+        else if (grade === "second" || grade === "third") {
+            first = Math.floor(Math.random() * 100);
+            second = Math.floor(Math.random() * 10);
+        }
+        else if (grade === "fourth" || grade === "fifth") {
+            first = Math.floor(Math.random() * 100);
+            second = Math.floor(Math.random() * 100);
+        }
+        var questionText = "What is " + first + " x " + second + " equal to?";
+        return [questionText, first, second];
     }
-    question = create();
 
-    const startQuiz = () => {
+    const startQuiz = param => {
+        setGrade(param);
+        setQuestion(create());
         setStarted(true);
-        question = create();
     }
+
 
     const handleSubmit = () => {
+        setStarted(true);
         var answer = document.getElementById('answer').value;
         if (answer == '') {
             alert("Please answer the question!");
@@ -44,19 +59,28 @@ export default function Multiplication() {
 
         if (i < 9) {
             setI(i + 1);
-            question = create();
+            setQuestion(create());
         } else {
             setShowScore(true);
         }
     };
 
     return (
-        <div>
+        <div className="container">
             {!started &&
                 <div className='start-page'>
                     Welcome to the Multiplication quiz! There will be 10 questions in this section.
-                    <div className="line"></div>
-                    <button onClick={() => startQuiz()}>Start</button>
+                    <br />
+                    Select grade level to begin:
+                    <br />
+                    <div className='grade-select'>
+                        <div className="grade-button" onClick={() => startQuiz('kinder')}>Kindergarten</div>
+                        <div className="grade-button" onClick={() => startQuiz('first')}>First</div>
+                        <div className="grade-button" onClick={() => startQuiz('second')}>Second</div>
+                        <div className="grade-button" onClick={() => startQuiz('third')}>Third</div>
+                        <div className="grade-button" onClick={() => startQuiz('fourth')}>Fourth</div>
+                        <div className="grade-button" onClick={() => startQuiz('fifth')}>Fifth</div>
+                    </div>
                 </div>}
             {!showScore && started && ascreen &&
                 <div className='question-section'>
@@ -78,7 +102,7 @@ export default function Multiplication() {
                     {!correct && i > 0 &&
                         <p>Incorrect</p>}
                 </div>}
-            {showScore && started &&
+            {showScore &&
                 <div className='score-section' >
                     You scored {score} out of {10}
                     <div className="line"></div>

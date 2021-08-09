@@ -23,19 +23,23 @@
 }
 
 .a {
-    background-color: blue;
+    /*background-color: blue;*/
+    background-color: rgb(78, 178, 255);
 }
 
 .b {
-    background-color: orange;
+    /*background-color: orange;*/
+    background-color: rgb(255, 228, 107);
 }
 
 .c {
-    background-color: red;
+    /*background-color: red;*/
+    background-color: rgb(250, 163, 182);
 }
 
 .d {
-    background-color: green;
+    /*background-color: green;*/
+    background-color: rgb(136, 255, 162);
 }
 
 .e {
@@ -53,9 +57,9 @@
 
 a {
     text-decoration: none;
-    color: grey;
+    color: rgb(0, 0, 0);
 }
 
 a:hover {
-    color: black;
+    color: rgba(105, 105, 105, 0.918);
 }

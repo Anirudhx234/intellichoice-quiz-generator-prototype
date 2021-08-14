@@ -42,12 +42,13 @@ export default function Multiplication() {
     const handleSubmit = () => {
         setStarted(true);
         var answer = document.getElementById('answer').value;
-        if (answer == '') {
+        if (answer === '') {
             alert("Please answer the question!");
             return;
         }
+        answer = parseInt(answer);
         document.getElementById('answer').value = '';
-        if (question[1] * question[2] == answer) {
+        if (question[1] * question[2] === answer) {
             setScore(score + 1);
             setCorrect(true);
         }
@@ -89,7 +90,7 @@ export default function Multiplication() {
                     </div>
                     <div className='answer-section'>
                         <div className='question-text'>{question[0]}</div>
-                        <input type="text" id="answer" autocomplete="off" />
+                        <input type="number" id="answer" autocomplete="off" />
                         <br></br>
                         <button onClick={() => handleSubmit()}>Submit</button>
                     </div>

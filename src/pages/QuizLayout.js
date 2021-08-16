@@ -34,7 +34,7 @@ export default function QuizLayout() {
     }
     else if (location.includes("division")) {
         topic = Division;
-        name = "Division;"
+        name = "Division"
     }
 
     function create() {
@@ -130,7 +130,7 @@ export default function QuizLayout() {
                 <div className='score-section' >
                     You scored {score} out of {10}
                     <div className="line"></div>
-                    <Link to={location} >
+                    <Link>
                         <div className="restart" onClick="window.location.href=window.location.href">Take the quiz again!</div>
                     </Link>
                 </div >

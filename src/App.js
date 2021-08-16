@@ -2,11 +2,8 @@ import React from 'react';
 import './App.css';
 import Home from './Home.js';
 import { BrowserRouter, Switch, Route} from 'react-router-dom';
-import Addition from './pages/Addition.js';
-import Subtraction from './pages/Subtraction.js';
-import Multiplication from './pages/Multiplication.js';
-import Division from './pages/Division.js';
 import Fractions from './pages/Fractions.js';
+import QuizLayout from './pages/QuizLayout.js';
 
 class App extends React.Component {
   render() {
@@ -15,10 +12,10 @@ class App extends React.Component {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Home />
           <Switch>
-            <Route path="/addition" component={Addition} />
-            <Route path="/subtraction" component={Subtraction} />
-            <Route path="/multiplication" component={Multiplication} />
-            <Route path="/division" component={Division} />
+          <Route path="/addition" component={QuizLayout} />
+            <Route path="/subtraction" component={QuizLayout} />
+            <Route path="/multiplication" component={QuizLayout} />
+            <Route path="/division" component={QuizLayout} />
             <Route path="/fractions" component={Fractions} />
           </Switch>
         </BrowserRouter>

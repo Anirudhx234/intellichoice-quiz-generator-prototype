@@ -18,9 +18,6 @@ class Home extends React.Component {
                 <Link to="/division">
                     <div className="box d" onClick="window.location.href=window.location.href"><h1>Division</h1></div>
                 </Link>
-                {/*<Link to="/fractions">
-                    <div className="box e" onClick="window.location.href=window.location.href"><h1>Fractions</h1></div>
-        </Link>*/}
             </div>
         );
     }

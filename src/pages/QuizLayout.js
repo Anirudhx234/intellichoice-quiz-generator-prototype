@@ -3,7 +3,7 @@ import Addition from './topics/Addition.js';
 import Subtraction from './topics/Subtraction.js';
 import Multiplication from './topics/Multiplication.js';
 import Division from './topics/Division.js';
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import $ from "jquery";
 import "./styles.css";
 
@@ -19,17 +19,17 @@ export default function QuizLayout() {
     const [question, setQuestion] = useState(0);
 
     var topic;
-    const location = useLocation().pathname;
-    if (location === "/addition") {
+    const location = window.location.href;
+    if (location.includes("addition")) {
         topic = Addition;
     }
-    else if (location === "/subtraction") {
+    else if (location.includes("subtraction")) {
         topic = Subtraction;
     }
-    else if (location === "/multiplication") {
+    else if (location.includes("multiplication")) {
         topic = Multiplication;
     }
-    else if (location === "/division") {
+    else if (location.includes("division")) {
         topic = Division;
     }
 
@@ -37,13 +37,11 @@ export default function QuizLayout() {
         return topic(grade);
     }
 
-
     const startQuiz = param => {
         setGrade(param);
         setQuestion(create());
         setStarted(true);
     }
-
 
     const handleSubmit = () => {
         setStarted(true);
@@ -75,11 +73,11 @@ export default function QuizLayout() {
         setQuestion(create());
         setAscreen(false);
         document.getElementById("answer").disabled = false;
-        $('#answer').focus(); 
+        $('#answer').focus();
     }
 
-    $(document).keyup(function(e){
-        if (e.keyCode === 13 && !ascreen){
+    $(document).keyup(function (e) {
+        if (e.keyCode === 13 && !ascreen) {
             $("#submit").click();
         }
     });

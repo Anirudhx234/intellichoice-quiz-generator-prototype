@@ -18,19 +18,23 @@ export default function QuizLayout() {
     const [ascreen, setAscreen] = useState(false);
     const [question, setQuestion] = useState(0);
 
-    var topic;
+    var topic, name;
     const location = window.location.href;
     if (location.includes("addition")) {
         topic = Addition;
+        name = "Addition";
     }
     else if (location.includes("subtraction")) {
         topic = Subtraction;
+        name = "Subtraction";
     }
     else if (location.includes("multiplication")) {
         topic = Multiplication;
+        name = "Multiplication";
     }
     else if (location.includes("division")) {
         topic = Division;
+        name = "Division;"
     }
 
     function create() {
@@ -86,7 +90,7 @@ export default function QuizLayout() {
         <div className="container">
             {!started &&
                 <div className='start-page'>
-                    Welcome to the {topic.name} quiz! There will be 10 questions in this section.
+                    Welcome to the {name} quiz! There will be 10 questions in this section.
                     <br />
                     Select grade level to begin:
                     <br />
